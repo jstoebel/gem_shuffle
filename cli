@@ -1,0 +1,23 @@
+require "thor"
+
+class CLI < Thor
+  desc 'gemshuffle', 'alter your Gemfile to point to different branches of jade or jade engine'
+  option :jade, default: nil
+  option :engine, default: nil
+  def shuffle
+    puts options
+  end
+
+  private
+
+  def collect
+  end
+end
+CLI.start(ARGV)
+=begin
+jade_shuffle --engine -> sets engine to path: '../jade_engine'
+jade_shuffle --engine=cr/somebranch -> sets engine to point to remote branch `cr/somebranch`
+jade_shuffle --jade -> sets jade to point to `../jade` and edits the engine's gemspec to not include jade. Will also set engine to point to `../jade_engine`
+
+jade_shuffle --engine --jade -> sets both 
+=end
